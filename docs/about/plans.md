@@ -57,7 +57,8 @@ you can also subscribe by card.
   support@nubestack.com for an invoice.
 - **Paddle.** Payments are handled by Paddle, NubeStack's reseller, which issues tax
   invoices.
-- **No refunds.** The free trial is the evaluation, so subscriptions are not refunded.
+- **14-day refunds.** You can ask for a full refund within 14 days of any payment, for any
+  reason.
 - **Cancelling** stops the next renewal; the license works until the end of the period
   you paid for.
 

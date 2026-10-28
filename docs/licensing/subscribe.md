@@ -163,7 +163,10 @@ renewal. The license keeps working until the end of the period you paid for; aft
 that, OpsPilot applies the limits without a subscription and keeps your configuration
 (see [Free trial and limits](trial-and-limits.md)).
 
-Subscriptions are not refunded: the free trial is the evaluation.
+You can ask for a full refund within 14 days of any payment, for any reason: email
+support@nubestack.com or use the link in your Paddle receipt. A refund of a new
+subscription or a renewal also cancels the subscription, and a refund of added seats
+removes those seats.
 
 ## Manage licenses as a team
 
