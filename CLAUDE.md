@@ -41,7 +41,7 @@ them.
 | Price | From $5 per user per month, or $50 per user per year; lower per-user prices from 5 seats. Never list band prices; link the pricing page. Prices are shown before tax; Paddle adds tax and shows local currency at checkout |
 | Seat | One person, up to 2 devices, one license key (`OPSP-…`) |
 | Payment | Paddle (reseller, issues tax invoices); invoices with PO and net terms on request by email |
-| Refunds | None; the free trial is the evaluation. Cancelling stops the next renewal and the license works to the end of the paid period |
+| Refunds | A full refund within 14 days of any payment, for any reason (owner, 2026-10-28; it was none before). A refund of a new subscription or renewal also cancels it; a refund of added seats removes them. Cancelling stops the next renewal and the license works to the end of the paid period |
 | Windows installer | Signed with NubeStack's own certificate, which Windows does not trust by default: **Unknown publisher**, and SmartScreen may warn |
 | Legal pages | The EULA and terms on the subscription site are drafts: do not link them |
 
