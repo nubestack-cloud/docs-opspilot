@@ -285,6 +285,12 @@ another to enter its details, then **Test Connection** before **Save & Activate*
 | `51-portal-seat.png` | `licensing/subscribe.md` |
 | `52-site-pricing.png` | `licensing/subscribe.md` |
 | `53-site-download.png` | `getting-started/install.md` |
+| `54-ai-assistants-connector-on.png` | `ai/assistants.md` |
+| `55-ai-assistants-claude-connected.png` | `ai/assistants.md` |
+| `56-claude-desktop-connectors.png` | `ai/assistants.md` |
+| `57-claude-desktop-session-check.png` | `ai/assistants.md` |
+| `58-claude-desktop-list-refused.png` | `ai/assistants.md` |
+| `59-claude-desktop-recent-output.png` | `ai/assistants.md` |
 
 `11` to `13` came from the product repository's own `docs/images/`; `14` onwards were taken
 for the 0.5.1 refresh from an isolated copy of OpsPilot with demo connections only (demo

@@ -11,11 +11,6 @@ it with OpsPilot needs an active OpsPilot free trial or subscription. Without on
 and a connected assistant is told the reason whenever it calls a tool. See
 [Free trial and limits](../licensing/trial-and-limits.md).
 
-![Settings, AI Assistants with the connector off: What this does, the pay-as-you-go provider row with an AI Providers button, and the Enable connector switch](../assets/images/27-settings-ai-assistants.png)
-_The AI Assistants page before the connector is turned on. Nothing can reach OpsPilot
-yet. Turning on **Enable connector** shows **Assistant connections**, where each
-assistant has its own **Connect** button and badge._
-
 ## The four assistants
 
 | Assistant | How it connects | Needs a provider API key? |
@@ -27,37 +22,91 @@ assistant has its own **Connect** button and badge._
 
 ## Connecting one
 
-1. In **Settings → AI Assistants**, turn on **Enable connector**. This starts a
-   local server that only the apps you explicitly connect can reach, and shows the
-   **Assistant connections** group.
-2. Click **Connect** on the assistant you want.
-3. Restart the assistant.
+The steps below use Claude Desktop. VS Code and ChatGPT Desktop work the same way,
+with a window reload or restart in step 4.
+
+1. Open **Settings → AI Assistants**. On a new installation only the top group is
+   there, and **Enable connector** is off.
+
+    ![Settings, AI Assistants with the connector off: What this does, a Pay-as-you-go provider row reading None configured with an AI Providers button, and the Enable connector switch](../assets/images/27-settings-ai-assistants.png)
+    _The starting point. Nothing can reach OpsPilot yet. An assistant needs no provider
+    API key, so **Pay-as-you-go provider** can stay at **None configured**._
+
+2. Turn on **Enable connector**. This starts a local server that only the apps you
+   explicitly connect can reach, and shows the **Assistant connections** group.
+
+    ![Settings, AI Assistants with the connector on: Assistant connections lists Claude Desktop, VS Code (Copilot Chat) and ChatGPT Desktop as Not connected with Connect buttons, ChatGPT Web / Work as Not configured with a Configure button, OpsPilot MCP service Running and a Last verified activity row](../assets/images/54-ai-assistants-connector-on.png)
+    _Each assistant has its own badge and button. **OpsPilot MCP service** reads
+    **Running** once the local server is up._
+
+3. Click **Connect** on the assistant you want. The badge changes to **Connected**
+   and the button to **Disconnect**.
+
+    ![Settings, AI Assistants with Claude Desktop marked Connected and a Disconnect button, and VS Code (Copilot Chat) still Not connected](../assets/images/55-ai-assistants-claude-connected.png)
+    _Claude Desktop is connected. The other assistants are unaffected until you
+    connect them too._
+
+4. Restart the assistant (or, for VS Code, reload the window). In Claude Desktop,
+   OpsPilot then appears as **opspilot** in its own connector list.
+
+    ![Claude Desktop's Settings, Connectors list with an opspilot entry of type Desktop, marked Local dev, with a tick under Status](../assets/images/56-claude-desktop-connectors.png)
+    _In Claude Desktop, under **Settings → Connectors**. A tick under **Status** shows
+    Claude Desktop has loaded it._
+
+5. Ask the assistant something about an open session. With an SSH or Local Console
+   tab open in OpsPilot, and **Enable AI** on for its connection, the assistant can
+   see it.
+
+    ![A Claude Desktop chat: asked whether it can use the OpsPilot connector, Claude replies that session-2 is open and asks what to do on it](../assets/images/57-claude-desktop-session-check.png)
+    _The assistant found the open session through `list_sessions`. Sessions whose
+    connection has AI off do not appear at all._
 
 For the desktop assistants, OpsPilot writes the configuration itself — there is
 no URL and no token to copy anywhere. It edits the assistant's own MCP
 configuration file in place and will not overwrite a file it cannot parse, so
 other MCP servers you already have configured survive.
 
-Step 3 is required: these assistants read their MCP configuration at startup.
-Claude Desktop and the ChatGPT desktop app need a restart; VS Code needs a
-window reload. After that the order does not matter: an assistant started before
+The restart in step 4 is required: these assistants read their MCP configuration at
+startup. After that the order does not matter: an assistant started before
 OpsPilot still gets OpsPilot's tools once OpsPilot is running.
 
 Each assistant shows a badge:
 
 | Badge | Meaning |
 |---|---|
-| **Connected** | The assistant's configuration points at this OpsPilot |
+| **Connected** | The assistant's configuration points at this OpsPilot. **Disconnect** removes it |
 | **Not connected** | OpsPilot is not in the assistant's configuration |
 | **Needs update** | The assistant is set up for another copy of OpsPilot (an older installation, say) or an old token. Click **Update** to point it at this OpsPilot, then restart the assistant |
 
 **ChatGPT Web / Work** is the exception — a browser or phone cannot reach your
-loopback interface, so it uses a tunnel instead of a config file. That setup has
+loopback interface, so it uses a tunnel instead of a config file. Its badge reads
+**Not configured** until you click **Configure** and finish that setup, which has
 its own page: [Remote & mobile operation](remote-mobile.md).
 
 **Last verified activity** on the same page shows the most recent tool call
 OpsPilot received from any connected assistant, which is the quickest way to
 confirm a connection is actually live without leaving OpsPilot.
+
+## What a working connection looks like
+
+Once connected, ask in plain language. The assistant chooses the tool; Claude
+Desktop shows which one it used above its answer.
+
+A refused tool call is normal, and the assistant is told why. Here the assistant
+tried `list_connections` while **Allow opening/reconnecting sessions** was off, so it
+could see the open session but not the saved connections:
+
+![A Claude Desktop chat reporting Used opspilot integration, 1 failed: it names the one open session and says it cannot see saved connections because session access is turned off in Settings, AI Assistants](../assets/images/58-claude-desktop-list-refused.png)
+_The failed call is `list_connections`. Turning on session access, described
+[below](#letting-an-assistant-open-sessions), is what lets an assistant list and open
+saved connections._
+
+A question about a session that is already open needs no session access:
+
+![A Claude Desktop chat: asked for the last error on a server's terminal, Claude used Get recent terminal output and reports a command-not-found typo and two earlier login errors](../assets/images/59-claude-desktop-recent-output.png)
+_`get_recent_output` read the session's scrollback, after OpsPilot's redaction, and
+the assistant summarised the errors in it. Reading needs no approval; a command it
+wants to run would arrive in OpsPilot as a proposal._
 
 ## The six tools an assistant gets
 
