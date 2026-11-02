@@ -37,38 +37,12 @@ it sends for licensing, and what it keeps of a session.
 
 ## Data flow
 
-```text
-terminal buffer
-     │
-     ▼
- escape sequences stripped
-     │
-     ▼
- redactor  ◀── Data Handling profile (connection → group → Default)
-     │
-     ▼
- AI provider  or  connected assistant
-     │
-     ▼
- proposal + risk self-assessment
-     │
-     ▼
- Command Safety profile  ── your list can add High risk; the AI's warning
-     │                       counts unless the profile says "Only my list"
-     ▼
- tier:  read-only      │  low risk          │  high risk
-        click, or      │  click, or         │  always a click,
-        none if the    │  none under        │  plus a typed reason
-        profile allows │  "Everything       │  if the profile
-        it             │  except dangerous" │  asks for one
-          │                  │                    │
-          └──────────────────┴────────────────────┘
-                             ▼
-              OpsPilot types it into the real shell
-                             │
-                             ▼
-              output → stripped → redactor → next turn
-```
+<figure class="opspilot-diagram">
+<div class="opspilot-diagram__viewport" role="region" aria-label="Session context and command approval diagram" tabindex="0">
+--8<-- "data-flow.svg"
+</div>
+<figcaption>Terminal content is cleaned and redacted before AI access. Proposals return through Command Safety; High risk commands always need a click.</figcaption>
+</figure>
 
 The loop at the bottom is easy to miss on a first reading: the output of an approved
 command is stripped and redacted again before it becomes context for the following turn.

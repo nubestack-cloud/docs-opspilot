@@ -330,9 +330,8 @@ Reserve `!!! danger` for things that can destroy data or expose credentials.
 
 ### Code blocks
 
-Always label the language — `bash`, `yaml`, `json`, `text`. Use `text` for the
-ASCII diagrams carried over from the guide. Do not put a `$` prompt in front of
-shell commands; the copy button copies it too.
+Always label the language — `bash`, `yaml`, `json`, `text`. Do not put a `$`
+prompt in front of shell commands; the copy button copies it too.
 
 ### Tables
 
@@ -355,12 +354,29 @@ hide_cta: true
 ---
 ```
 
-### Mermaid
+### Diagrams
 
-`mermaid` fenced blocks are configured and render. Prefer the plain-text ASCII
-diagrams from the source guide where they already exist and read well — they are
-part of the product's voice. Use Mermaid for a flow the sources do not already
-draw.
+Use graphical diagrams for architecture and flows. SVGs live in
+`docs/assets/diagrams/` and are included inline so the shared `.opspilot-diagram`
+styles in `extra.css` follow the light and dark themes:
+
+```html
+<figure class="opspilot-diagram">
+<div class="opspilot-diagram__viewport" role="region" aria-label="Session context and command approval diagram" tabindex="0">
+--8<-- "data-flow.svg"
+</div>
+<figcaption>Proposals return through Command Safety; High risk commands always need a click.</figcaption>
+</figure>
+```
+
+Give every SVG a `viewBox`, `role="img"`, and a unique `<title>` and `<desc>`
+referenced by `aria-labelledby`. Prefix IDs with the diagram's name so different
+diagrams can share a page. Reuse an existing diagram when the same flow appears
+again. The viewport scrolls on small screens and can be focused for keyboard
+scrolling; keep the caption outside it.
+
+Commands, configuration and sample output remain code blocks. Mermaid fenced
+blocks are also available for flows that do not need a custom illustration.
 
 ## Terminology
 

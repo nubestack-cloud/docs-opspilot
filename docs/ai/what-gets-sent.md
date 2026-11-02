@@ -87,34 +87,12 @@ is asking; it does not change what they can be told.
 
 ## The data flow
 
-```text
-terminal buffer
-     │
-     ▼
- escape sequences stripped
-     │
-     ▼
- redactor  ◀── Data Handling profile (connection → group → Default)
-     │
-     ▼
- AI provider  or  connected assistant
-     │
-     ▼
- proposal + risk self-assessment
-     │
-     ▼
- Command Safety profile  ── decides the tier, and what may run without a click
-     │
-     ▼
- tier:  read-only  │  low risk  │  high risk (always a click)
-          │              │              │
-          └──────────────┴──────────────┘
-                         ▼
-          OpsPilot types it into the real shell
-                         │
-                         ▼
-          output → stripped → redactor → next turn
-```
+<figure class="opspilot-diagram">
+<div class="opspilot-diagram__viewport" role="region" aria-label="Session context and command approval diagram" tabindex="0">
+--8<-- "data-flow.svg"
+</div>
+<figcaption>Terminal content is cleaned and redacted before AI access. Proposals return through Command Safety; High risk commands always need a click.</figcaption>
+</figure>
 
 Credentials, private keys, the connection store and the contents of AI-disabled sessions
 never leave the machine. With a local model and an offline license file or a deployment

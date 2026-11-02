@@ -11,18 +11,12 @@ already sits on both sides — reaching the isolated network over VPN, and reach
 the AI provider over the internet. The servers make no outbound call, need no
 proxy exception, and require no configuration change.
 
-```text
-   Your workstation                Disconnected / VPN-only network
-   ┌────────────────┐              ┌──────────────────────────────┐
-   │                │   SSH/RDP    │  bastion-01   db-primary     │
-   │   OpsPilot  ───┼──────────────┼─▶ web-01      core-router    │
-   │       │        │   over VPN   │  (no internet, no AI SDK,    │
-   └───────┼────────┘              │   no agent installed)        │
-           │                       └──────────────────────────────┘
-           │ redacted text only
-           ▼
-      AI provider  (or a local model — then nothing leaves the machine at all)
-```
+<figure class="opspilot-diagram">
+<div class="opspilot-diagram__viewport" role="region" aria-label="OpsPilot private network access diagram" tabindex="0">
+--8<-- "private-network.svg"
+</div>
+<figcaption>The workstation reaches the private network and your chosen model. Target hosts need no internet access or installed agent.</figcaption>
+</figure>
 
 Nothing is installed on the target hosts: no agent, no sidecar, no daemon, no
 runtime, no outbound firewall rule. Any host you can already reach is a host
@@ -183,11 +177,12 @@ The workstation stays on the VPN; you do not have to. From the ChatGPT mobile or
 web app, through OpsPilot's tunnel, you can list sessions, read output and propose
 commands against servers with no internet connection of their own.
 
-```text
-  Phone (ChatGPT app)  ──▶  OpenAI tunnel  ──▶  OpsPilot on your desk  ──▶  VPN  ──▶  disconnected servers
-                                                        │
-                                              approval still required here
-```
+<figure class="opspilot-diagram">
+<div class="opspilot-diagram__viewport" role="region" aria-label="Remote and mobile access diagram" tabindex="0">
+--8<-- "remote-access.svg"
+</div>
+<figcaption>The tunnel reaches the workstation's loopback connector. Command Safety rules and approval stay at the workstation.</figcaption>
+</figure>
 
 The tunnel forwards only to OpsPilot's own loopback endpoint with a valid token;
 any other destination is refused, and no public listener is opened. The runtime

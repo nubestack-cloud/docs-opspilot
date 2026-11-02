@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 570" role="img" aria-labelledby="private-network-title private-network-desc">
+  <title id="private-network-title">OpsPilot connects your workstation to a private estate and a model</title>
+  <desc id="private-network-desc">OpsPilot runs on your workstation and uses your existing SSH and remote-desktop access over VPN to reach private servers and network devices. Nothing is installed on the hosts and they need no internet connection. Session context is redacted locally before a remote AI provider receives it. A local model is an alternative that keeps inference on the workstation. A fully air-gapped setup also requires offline activation or a deployment license.</desc>
+  <defs>
+    <marker id="private-network-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path class="d-arrow--accent" d="M0 0 8 4 0 8Z"/></marker>
+  </defs>
+  <text class="d-label" x="24" y="30">ONE WORKSTATION · TWO CONNECTION PATHS</text>
+  <rect class="d-zone" x="24" y="56" width="412" height="442" rx="14"/>
+  <text class="d-label" x="44" y="86">YOUR WORKSTATION</text>
+  <rect class="d-zone" x="592" y="56" width="344" height="270" rx="14"/>
+  <text class="d-label" x="612" y="86">PRIVATE / VPN-ONLY NETWORK</text>
+
+  <path class="d-flow" d="M412 174H592" marker-end="url(#private-network-arrow)"/>
+  <text class="d-muted d-centred" x="502" y="151">SSH / RDP</text>
+  <text class="d-muted d-centred" x="502" y="198">over VPN</text>
+  <path class="d-flow" d="M412 212H480V444H592" marker-end="url(#private-network-arrow)"/>
+  <text class="d-muted" x="496" y="420">Redacted text</text>
+  <path class="d-flow" d="M230 236V354" marker-end="url(#private-network-arrow)"/>
+  <text class="d-muted" x="246" y="292">Local option</text>
+  <text class="d-muted" x="246" y="314">Inference stays here</text>
+
+  <rect class="d-card--accent" x="48" y="110" width="364" height="126" rx="12"/>
+  <svg class="d-icon" x="68" y="132" width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M6 8 10 12 6 16M13 16H18"/></svg>
+  <text class="d-title" x="116" y="154">OpsPilot</text>
+  <text class="d-muted" x="68" y="191">Existing terminal and remote-desktop sessions</text>
+  <text class="d-muted" x="68" y="215">Local redaction and Command Safety profiles</text>
+
+  <rect class="d-card" x="612" y="112" width="138" height="72" rx="10"/>
+  <text x="632" y="154">Bastion</text>
+  <rect class="d-card" x="774" y="112" width="138" height="72" rx="10"/>
+  <text x="794" y="154">Database</text>
+  <rect class="d-card" x="612" y="200" width="138" height="72" rx="10"/>
+  <text x="632" y="242">Web server</text>
+  <rect class="d-card" x="774" y="200" width="138" height="72" rx="10"/>
+  <text x="794" y="242">Router</text>
+  <text class="d-muted" x="612" y="302">No OpsPilot agent or AI runtime on hosts</text>
+
+  <rect class="d-card" x="48" y="354" width="364" height="120" rx="12"/>
+  <svg class="d-icon" x="68" y="376" width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8H16V16H8ZM8 1V4M16 1V4M8 20V23M16 20V23M1 8H4M1 16H4M20 8H23M20 16H23"/></svg>
+  <text class="d-title" x="114" y="398">Local model</text>
+  <text class="d-muted" x="68" y="434">Run inference on this workstation</text>
+  <text class="d-muted" x="68" y="456">Use instead of a remote provider</text>
+
+  <rect class="d-card" x="592" y="390" width="344" height="108" rx="12"/>
+  <svg class="d-icon" x="612" y="412" width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.5 9.5 22 12 14.5 14.5 12 22 9.5 14.5 2 12 9.5 9.5Z"/></svg>
+  <text class="d-title" x="660" y="434">AI provider</text>
+  <text class="d-muted" x="612" y="470">Receives redacted session context</text>
+
+  <text class="d-muted d-centred" x="480" y="540">A fully air-gapped setup also needs offline activation or a deployment license.</text>
+</svg>

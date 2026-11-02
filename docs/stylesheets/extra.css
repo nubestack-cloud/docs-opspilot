@@ -42,6 +42,94 @@
 .md-typeset__table { width: 100%; }
 .md-typeset table:not([class]) { font-size: 0.76rem; }
 
+/* Inline SVG diagrams share the page's theme and stay readable on small screens. */
+.opspilot-diagram {
+  --diagram-accent: #327b78;
+  --diagram-tint: #edf6f4;
+  --diagram-line: #778a89;
+  --diagram-border: #d7e3e1;
+  --diagram-surface: #f6f9f8;
+  --diagram-risk: #a33f4b;
+  --diagram-risk-tint: #fff3f3;
+}
+[data-md-color-scheme="slate"] .opspilot-diagram {
+  --diagram-accent: #83d1c7;
+  --diagram-tint: #263e3d;
+  --diagram-line: #9cadaa;
+  --diagram-border: #49605e;
+  --diagram-surface: #293235;
+  --diagram-risk: #f0a4ac;
+  --diagram-risk-tint: #402d35;
+}
+.md-typeset figure.opspilot-diagram {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.6rem 0;
+}
+.opspilot-diagram__viewport {
+  overflow-x: auto;
+  border: 1px solid var(--diagram-border);
+  border-radius: 12px;
+  background: var(--md-default-bg-color);
+  scrollbar-color: var(--diagram-line) var(--diagram-surface);
+}
+.opspilot-diagram__viewport:focus-visible {
+  outline: 2px solid var(--diagram-accent);
+  outline-offset: 3px;
+}
+.opspilot-diagram__viewport > svg {
+  display: block;
+  width: 100%;
+  min-width: 760px;
+  height: auto;
+}
+.opspilot-diagram text {
+  fill: var(--md-default-fg-color);
+  font-family: var(--md-text-font-family);
+  font-size: 14px;
+  text-anchor: start;
+}
+.opspilot-diagram .d-title { font-size: 19px; font-weight: 700; }
+.opspilot-diagram .d-title--small { font-size: 17px; }
+.opspilot-diagram .d-muted { fill: var(--md-default-fg-color--light); font-size: 13px; }
+.opspilot-diagram .d-label {
+  fill: var(--diagram-accent); font-size: 11px; font-weight: 700; letter-spacing: 1.4px;
+}
+.opspilot-diagram .d-centred { text-anchor: middle; }
+.opspilot-diagram .d-card {
+  fill: var(--md-default-bg-color); stroke: var(--diagram-border); stroke-width: 1.5;
+}
+.opspilot-diagram .d-card--accent {
+  fill: var(--diagram-tint); stroke: var(--diagram-accent); stroke-width: 1.5;
+}
+.opspilot-diagram .d-card--risk {
+  fill: var(--diagram-risk-tint); stroke: var(--diagram-risk); stroke-width: 1.5;
+}
+.opspilot-diagram .d-risk { fill: var(--diagram-risk); }
+.opspilot-diagram .d-zone {
+  fill: var(--diagram-surface); stroke: var(--diagram-border); stroke-dasharray: 6 5;
+}
+.opspilot-diagram .d-chip { fill: var(--diagram-tint); }
+.opspilot-diagram .d-number {
+  fill: var(--diagram-accent); font-size: 16px; font-weight: 700; text-anchor: middle;
+}
+.opspilot-diagram .d-icon {
+  fill: none; stroke: var(--diagram-accent); stroke-width: 1.7;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.opspilot-diagram .d-line {
+  fill: none; stroke: var(--diagram-line); stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.opspilot-diagram .d-flow {
+  fill: none; stroke: var(--diagram-accent); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.opspilot-diagram .d-arrow { fill: var(--diagram-line); }
+.opspilot-diagram .d-arrow--accent { fill: var(--diagram-accent); }
+.md-typeset .opspilot-diagram figcaption { margin: .65rem .2rem 0; text-align: left; }
+
 /* Homepage hero. Scoped to the home page (hide: [toc]) by its class, so it
    never affects an ordinary documentation page. */
 .opspilot-hero {

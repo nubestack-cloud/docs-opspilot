@@ -57,38 +57,12 @@ unsigned answer never changes the license state.
 
 ## Data flow
 
-```text
-terminal buffer
-     │
-     ▼
- strip terminal control sequences
-     │
-     ▼
- redactor  ◀── Data Handling profile (connection → group → Default)
-     │
-     ▼
- AI provider  or  connected assistant
-     │
-     ▼
- proposal + risk self-assessment
-     │
-     ▼
- Command Safety profile  ── your patterns may escalate; the AI's warning
-     │                      counts unless the profile says "Only my list"
-     ▼
- tier: read-only │ low risk │ high risk
-     │              │            │
-  click, or      click, or    click, and a typed
-  auto-run       auto-run     reason unless the
-                 (all)        profile turns it off
-     │              │            │
-     └──────────────┴────────────┘
-                    ▼
-              real shell
-                    │
-                    ▼
-  output → strip → redactor → next turn
-```
+<figure class="opspilot-diagram">
+<div class="opspilot-diagram__viewport" role="region" aria-label="Session context and command approval diagram" tabindex="0">
+--8<-- "data-flow.svg"
+</div>
+<figcaption>Terminal content is cleaned and redacted before AI access. Proposals return through Command Safety; High risk commands always need a click.</figcaption>
+</figure>
 
 ## The redaction choke point
 

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 878" role="img" aria-labelledby="data-flow-title data-flow-desc">
+  <title id="data-flow-title">Session context, redaction and command approval</title>
+  <desc id="data-flow-desc">For sessions with AI enabled, terminal text has control sequences stripped and passes through local redaction using the connection's Data Handling profile, falling back to its group and then Default. An AI provider or connected assistant receives redacted context and returns a proposal with a risk assessment. The Command Safety profile determines the risk tier and what may run. Auto-run starts off. Read-only and Low risk commands can run without a click only when the profile permits them; High risk commands always need a click, plus a typed reason if required by the profile. OpsPilot executes authorised commands in the real session shell. Command output goes through cleaning and redaction again before the next turn.</desc>
+  <defs>
+    <marker id="data-flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path class="d-arrow--accent" d="M0 0 8 4 0 8Z"/></marker>
+    <marker id="data-flow-return" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path class="d-arrow" d="M0 0 8 4 0 8Z"/></marker>
+  </defs>
+  <text class="d-label" x="24" y="30">SESSION CONTEXT AND COMMAND APPROVAL</text>
+
+  <path class="d-flow" d="M232 106H280" marker-end="url(#data-flow-arrow)"/>
+  <path class="d-flow" d="M528 106H576" marker-end="url(#data-flow-arrow)"/>
+  <path class="d-flow" d="M752 156V214" marker-end="url(#data-flow-arrow)"/>
+  <text class="d-muted" x="770" y="188">Redacted context</text>
+  <path class="d-flow" d="M576 270H528" marker-end="url(#data-flow-arrow)"/>
+
+  <rect class="d-card" x="24" y="56" width="208" height="100" rx="12"/>
+  <svg class="d-icon" x="42" y="74" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M6 8 10 12 6 16M13 16H18"/></svg>
+  <text class="d-title" x="78" y="94">Terminal buffer</text>
+  <text class="d-muted" x="42" y="132">Sessions with AI enabled</text>
+
+  <rect class="d-card" x="280" y="56" width="248" height="100" rx="12"/>
+  <svg class="d-icon" x="298" y="74" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5H20M4 12H15M4 19H11M18 15 22 19M22 15 18 19"/></svg>
+  <text class="d-title" x="334" y="94">Clean terminal text</text>
+  <text class="d-muted" x="298" y="132">Strip escape and control sequences</text>
+
+  <rect class="d-card--accent" x="576" y="56" width="352" height="100" rx="12"/>
+  <svg class="d-icon" x="596" y="74" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 20 6V12C20 17 16 20 12 22 8 20 4 17 4 12V6ZM8 12 11 15 16 9"/></svg>
+  <text class="d-title" x="632" y="94">Local redaction</text>
+  <text class="d-muted" x="596" y="132">Data Handling: connection → group → Default</text>
+
+  <rect class="d-card" x="576" y="214" width="352" height="114" rx="12"/>
+  <svg class="d-icon" x="596" y="232" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.5 9.5 22 12 14.5 14.5 12 22 9.5 14.5 2 12 9.5 9.5Z"/></svg>
+  <text class="d-title" x="632" y="252">AI provider or assistant</text>
+  <text class="d-muted" x="596" y="284">Receives redacted session context</text>
+  <text class="d-muted" x="596" y="307">Returns a proposal + risk self-assessment</text>
+
+  <rect class="d-card--accent" x="24" y="214" width="504" height="114" rx="12"/>
+  <svg class="d-icon" x="44" y="232" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3V21M12 3V21M19 3V21"/><rect x="2" y="6" width="6" height="4" rx="1"/><rect x="9" y="14" width="6" height="4" rx="1"/><rect x="16" y="8" width="6" height="4" rx="1"/></svg>
+  <text class="d-title" x="82" y="252">Command Safety profile</text>
+  <text class="d-muted" x="44" y="284">Combines the risk assessment and your patterns.</text>
+  <text class="d-muted" x="44" y="307">Auto-run starts off; your profile sets the run rules.</text>
+
+  <path class="d-flow" d="M276 328V364H164V392" marker-end="url(#data-flow-arrow)"/>
+  <path class="d-flow" d="M276 364H480V392" marker-end="url(#data-flow-arrow)"/>
+  <path class="d-flow" d="M480 364H792V392" marker-end="url(#data-flow-arrow)"/>
+
+  <rect class="d-card" x="24" y="392" width="280" height="156" rx="12"/>
+  <text class="d-title" x="44" y="432">Read-only</text>
+  <text class="d-muted" x="44" y="466">Click, or auto-run under</text>
+  <text class="d-muted" x="44" y="488">Only read-only commands or</text>
+  <text class="d-muted" x="44" y="510">Everything except dangerous ones.</text>
+
+  <rect class="d-card" x="340" y="392" width="280" height="156" rx="12"/>
+  <text class="d-title" x="360" y="432">Low risk</text>
+  <text class="d-muted" x="360" y="466">Click, or auto-run under</text>
+  <text class="d-muted" x="360" y="488">Everything except dangerous ones.</text>
+
+  <rect class="d-card--risk" x="656" y="392" width="272" height="156" rx="12"/>
+  <text class="d-title d-risk" x="676" y="432">High risk</text>
+  <text class="d-muted" x="676" y="466">Always a click at the workstation.</text>
+  <text class="d-muted" x="676" y="488">Typed reason if the profile asks.</text>
+  <text class="d-muted" x="676" y="510">The reason is on by default.</text>
+
+  <path class="d-flow" d="M164 548V584H480V626" marker-end="url(#data-flow-arrow)"/>
+  <path class="d-flow" d="M480 548V584M792 548V584H480"/>
+  <text class="d-label" x="498" y="609">AUTHORISED COMMAND</text>
+
+  <rect class="d-card--accent" x="302" y="626" width="356" height="104" rx="12"/>
+  <svg class="d-icon" x="322" y="648" width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M6 8 10 12 6 16M13 16H18"/></svg>
+  <text class="d-title" x="366" y="670">Real session shell</text>
+  <text class="d-muted" x="322" y="705">OpsPilot executes the authorised command</text>
+  <path class="d-line" d="M302 678H12V106H24" stroke-dasharray="5 5" marker-end="url(#data-flow-return)"/>
+  <text class="d-muted" x="36" y="650">Command output returns</text>
+  <text class="d-muted" x="36" y="670">through cleaning and redaction</text>
+
+  <rect class="d-zone" x="24" y="766" width="904" height="86" rx="10"/>
+  <text class="d-muted" x="44" y="797">Default: the AI's warning or a pattern match can make a command High risk.</text>
+  <text class="d-muted" x="44" y="823">With “Only my list”, patterns alone decide; the AI's warning stays visible but is not applied.</text>
+</svg>

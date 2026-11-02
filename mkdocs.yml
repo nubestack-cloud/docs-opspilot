@@ -69,6 +69,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.snippets:
+      base_path: [docs/assets/diagrams]
       check_paths: true
   - pymdownx.superfences:
       custom_fences:

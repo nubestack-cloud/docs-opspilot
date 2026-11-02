@@ -41,6 +41,7 @@ docs/
   reference/                  connection fields, settings, providers, MCP tools, patterns, glossary
   about/                      plans, release notes, support, licensing
   assets/images/              product and portal screenshots (demo data only)
+  assets/diagrams/            accessible SVG diagrams, styled for both themes
   stylesheets/extra.css       risk-tier badges, screenshot captions, Download and Subscribe buttons
 overrides/                    theme override: Download and Subscribe on every page
 .github/workflows/docs.yml    strict build on every push and PR; deploys main to Pages

@@ -17,11 +17,12 @@ gain no connectivity; the workstation already had it, and the tunnel lets a
 hosted ChatGPT chat reach the MCP connector that remains bound to loopback on
 that workstation.
 
-```text
-  Phone (ChatGPT app)  ──▶  OpenAI tunnel  ──▶  OpsPilot on your desk  ──▶  VPN  ──▶  disconnected servers
-                                                        │
-                                     approval and Command Safety rules apply here
-```
+<figure class="opspilot-diagram">
+<div class="opspilot-diagram__viewport" role="region" aria-label="Remote and mobile access diagram" tabindex="0">
+--8<-- "remote-access.svg"
+</div>
+<figcaption>The tunnel reaches the workstation's loopback connector. Command Safety rules and approval stay at the workstation.</figcaption>
+</figure>
 
 Approval still happens at the workstation, through the same execution boundary
 and the same Command Safety profiles as every other AI path.
