@@ -193,8 +193,38 @@
   color: #fff;
 }
 
-/* No table of contents on any page (owner, 2026-11-02): the right-hand sidebar is hidden and
-   the article takes its width. Heading permalinks stay. Material shows it with
-   `.md-sidebar--secondary:not([hidden])`, so the rule matches that specificity. */
-.md-sidebar--secondary,
-.md-sidebar--secondary:not([hidden]) { display: none; }
+/* Match Cloud's layout: navigation at the left edge, contents at the right,
+   and a readable article centred in the space between them. */
+.md-grid { max-width: none; }
+.md-content { max-width: 52rem; margin-inline: auto; }
+.md-content:has(.opspilot-hero) { max-width: 62rem; }
+
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary { width: 13.2rem; }
+}
+@media screen and (min-width: 100em) {
+  .md-sidebar { width: 13.5rem; }
+  .md-sidebar--primary { width: 14.2rem; }
+}
+
+/* Keep the contents label visible while scrolling and mark the current section. */
+.md-nav--secondary > .md-nav__title {
+  font-size: .62rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+  background: var(--md-default-bg-color);
+  box-shadow: 0 0 .4rem .4rem var(--md-default-bg-color);
+}
+@media screen and (min-width: 60em) {
+  .md-nav--secondary > .md-nav__list {
+    border-left: 1px solid var(--md-default-fg-color--lightest); margin-left: .6rem;
+  }
+  [dir] .md-nav--secondary .md-nav__list { padding-left: 0; }
+  .md-nav--secondary .md-nav__item { padding-left: 0; }
+  .md-nav--secondary .md-nav__link {
+    margin-left: -1px; padding-left: .8rem; border-left: 2px solid transparent;
+  }
+  .md-nav--secondary .md-nav__link--active {
+    border-left-color: var(--md-typeset-a-color); font-weight: 600;
+  }
+  .md-nav--secondary .md-nav .md-nav__link { padding-left: 1.6rem; }
+}
