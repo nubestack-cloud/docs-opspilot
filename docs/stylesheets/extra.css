@@ -42,7 +42,7 @@
 .md-typeset__table { width: 100%; }
 .md-typeset table:not([class]) { font-size: 0.76rem; }
 
-/* Homepage hero. Scoped to the page that sets hide: [navigation, toc], so it
+/* Homepage hero. Scoped to the home page (hide: [toc]) by its class, so it
    never affects an ordinary documentation page. */
 .opspilot-hero {
   text-align: center;
@@ -192,3 +192,9 @@
   border-color: var(--opspilot-brand-strong);
   color: #fff;
 }
+
+/* No table of contents on any page (owner, 2026-11-02): the right-hand sidebar is hidden and
+   the article takes its width. Heading permalinks stay. Material shows it with
+   `.md-sidebar--secondary:not([hidden])`, so the rule matches that specificity. */
+.md-sidebar--secondary,
+.md-sidebar--secondary:not([hidden]) { display: none; }
