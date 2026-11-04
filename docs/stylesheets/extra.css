@@ -197,8 +197,30 @@
 /* Calls to action on every page (overrides/main.html, overrides/partials/opspilot-cta.html).
    Brand teal from the hero mark; works on both the light and the dark (slate) scheme. */
 :root {
-  --opspilot-brand: #2f7a76;
-  --opspilot-brand-strong: #25625f;
+  --opspilot-brand: #3c7d7d;
+  --opspilot-brand-strong: #2d6a6a;
+}
+
+/* Buttons use the product teal independently of Material's link accent. */
+.md-typeset button, .md-top {
+  --md-accent-fg-color: var(--opspilot-brand);
+  --md-accent-bg-color: #fff;
+}
+.md-typeset .md-button {
+  border-color: var(--opspilot-brand);
+  color: var(--opspilot-brand);
+}
+[data-md-color-scheme="slate"] .md-typeset .md-button {
+  color: #fff;
+}
+.md-typeset .md-button--primary {
+  background: var(--opspilot-brand);
+  color: #fff;
+}
+.md-typeset .md-button:is(:hover, :focus) {
+  background: var(--opspilot-brand-strong);
+  border-color: var(--opspilot-brand-strong);
+  color: #fff;
 }
 .opspilot-announce {
   display: flex;
@@ -216,7 +238,7 @@
 .md-banner .opspilot-announce__link:visited {
   display: inline-block;
   padding: 0.1rem 0.7rem;
-  border: 1px solid currentcolor;
+  border: 1px solid var(--opspilot-brand);
   border-radius: 1rem;
   color: inherit;
   font-weight: 700;
@@ -224,12 +246,13 @@
 }
 .md-banner .opspilot-announce__link--primary,
 .md-banner .opspilot-announce__link--primary:visited {
-  background: #4ade80;
-  border-color: #4ade80;
-  color: #0b2b1a;
+  background: var(--opspilot-brand);
+  color: #fff;
 }
-.md-banner .opspilot-announce__link:hover {
-  opacity: 0.85;
+.md-banner .opspilot-announce__link:is(:hover, :focus) {
+  background: var(--opspilot-brand-strong);
+  border-color: var(--opspilot-brand-strong);
+  color: #fff;
 }
 .md-typeset .opspilot-cta {
   display: flex;
@@ -261,24 +284,6 @@
 }
 .md-typeset .opspilot-cta .md-button {
   margin: 0;
-  border-color: var(--opspilot-brand);
-  color: var(--opspilot-brand);
-}
-[data-md-color-scheme="slate"] .md-typeset .opspilot-cta .md-button {
-  color: #7fd1c8;
-  border-color: #7fd1c8;
-}
-.md-typeset .opspilot-cta .md-button--primary,
-[data-md-color-scheme="slate"] .md-typeset .opspilot-cta .md-button--primary {
-  background: var(--opspilot-brand);
-  border-color: var(--opspilot-brand);
-  color: #fff;
-}
-.md-typeset .opspilot-cta .md-button:hover,
-.md-typeset .opspilot-cta .md-button:focus {
-  background: var(--opspilot-brand-strong);
-  border-color: var(--opspilot-brand-strong);
-  color: #fff;
 }
 
 /* Match Cloud's layout: navigation at the left edge, contents at the right,
@@ -287,12 +292,56 @@
 .md-content { max-width: 52rem; margin-inline: auto; }
 .md-content:has(.opspilot-hero) { max-width: 62rem; }
 
+/* Navigation inherits the site's monochrome theme in both colour schemes. */
+.md-nav--primary .md-nav__link:is(.md-nav__link--active, :hover, :focus),
+.md-nav--secondary .md-nav__link:is(.md-nav__link--active, :hover, :focus) {
+  color: var(--md-default-fg-color);
+}
+
 @media screen and (min-width: 76.25em) {
-  .md-sidebar--primary { width: 13.2rem; }
+  .md-main { --opspilot-navigation-width: 13.2rem; }
+  .md-main__inner { margin-top: 0; }
+  .md-content, .md-sidebar--secondary { margin-top: 1.5rem; }
+  .md-sidebar--primary { width: var(--opspilot-navigation-width); }
+  .md-sidebar--primary .md-sidebar__scrollwrap { margin: 0; }
+  [dir] .md-sidebar--primary .md-sidebar__inner { padding-right: 0; }
+  .md-nav--primary > .md-nav__title { display: none; }
+  [dir] .md-nav--primary .md-nav__list { padding: 0; }
+  [dir] .md-nav--primary > .md-nav__list { padding: .5rem .7rem .8rem .5rem; }
+  [dir] .md-nav--primary .md-nav__item { padding: 0; }
+  .md-nav--primary .md-nav__link {
+    margin-top: 1px; padding: .35rem .55rem; border-radius: 6px; align-items: center;
+    color: var(--md-default-fg-color--light); transition: background-color .15s, color .15s;
+  }
+  .md-nav--primary .md-nav__link:hover { background: var(--md-default-fg-color--lightest); color: var(--md-default-fg-color); }
+  .md-nav--primary .md-nav__link.md-nav__link--active,
+  .md-nav--primary .md-nav__container > .md-nav__link--active:first-child {
+    background: var(--md-default-fg-color--lightest); color: var(--md-default-fg-color); font-weight: 600;
+  }
+  .md-nav--primary .md-nav__container { padding: 0; gap: 0; }
+  .md-nav--primary .md-nav__container > .md-nav__link { margin: 0; }
+  .md-nav--primary .md-nav__container > label.md-nav__link { padding: .35rem .4rem; }
+  .md-nav--primary .md-nav__container > label.md-nav__link.md-nav__link--active { background: none; }
+  .md-nav--primary .md-nav__link .md-nav__icon { width: .8rem; height: .8rem; color: var(--md-default-fg-color--lighter); }
+  .md-nav--primary > .md-nav__list > .md-nav__item { margin-top: .2rem; }
+  .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link,
+  .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__container > .md-nav__link:first-child {
+    color: var(--md-default-fg-color); font-size: .74rem; font-weight: 650;
+  }
+  .md-nav--primary > .md-nav__list > .md-nav__item--active > .md-nav__container > .md-nav__link:first-child { color: var(--md-default-fg-color); }
+  [dir] .md-nav--primary .md-nav .md-nav__list {
+    margin: .15rem 0 .45rem .95rem; padding-left: .45rem; border-left: 1px solid var(--md-default-fg-color--lightest);
+  }
+  .md-nav--primary .md-nav .md-nav__link { position: relative; font-size: .68rem; }
+  .md-nav--primary .md-nav .md-nav__link--active::before {
+    content: ""; position: absolute; left: -.45rem; top: .3rem; bottom: .3rem;
+    width: 2px; border-radius: 2px; background: var(--md-default-fg-color);
+  }
 }
 @media screen and (min-width: 100em) {
+  .md-main { --opspilot-navigation-width: 14.2rem; }
   .md-sidebar { width: 13.5rem; }
-  .md-sidebar--primary { width: 14.2rem; }
+  .md-sidebar--primary { width: var(--opspilot-navigation-width); }
 }
 
 /* Keep the contents label visible while scrolling and mark the current section. */
@@ -312,7 +361,7 @@
     margin-left: -1px; padding-left: .8rem; border-left: 2px solid transparent;
   }
   .md-nav--secondary .md-nav__link--active {
-    border-left-color: var(--md-typeset-a-color); font-weight: 600;
+    border-left-color: var(--md-default-fg-color); font-weight: 600;
   }
   .md-nav--secondary .md-nav .md-nav__link { padding-left: 1.6rem; }
 }

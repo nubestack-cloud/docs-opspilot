@@ -4,7 +4,8 @@ site_description: >-
   for DevOps, SRE, network, platform and development teams.
 site_author: NubeStack
 site_url: https://opspilot.nubestack.com/
-copyright: Copyright &copy; NubeStack. All rights reserved.
+copyright: >-
+  Copyright &copy; <a href="https://nubestack.com/">NubeStack</a>. All rights reserved.
 
 theme:
   name: material
@@ -92,8 +93,11 @@ extra:
   generator: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/nubestack-collab
+      link: https://github.com/nubestack-cloud
       name: NubeStack on GitHub
+    - icon: fontawesome/solid/globe
+      link: https://nubestack.com/
+      name: NubeStack website
 
 nav:
   - Home: index.md

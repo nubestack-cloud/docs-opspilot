@@ -6,7 +6,7 @@ DevOps, SRE, network, platform and development teams.
 This repository contains documentation only. The product itself lives in a
 separate repository.
 
-Published site: <https://opspilot.nubestack.com/> (GitHub Pages default: <https://nubestack-collab.github.io/docs-opspilot/>)
+Published site: <https://opspilot.nubestack.com/> (GitHub Pages default: <https://nubestack-cloud.github.io/docs-opspilot/>)
 
 ## Build it locally
 
@@ -82,7 +82,7 @@ re-run the workflow.
 ## Custom domain
 
 The site is served at `opspilot.nubestack.com` rather than the default
-`nubestack-collab.github.io` address. Two things make that work, both already in
+`nubestack-cloud.github.io` address. Two things make that work, both already in
 place:
 
 - `docs/CNAME` — a single line, `opspilot.nubestack.com`. MkDocs copies it into
@@ -97,7 +97,7 @@ them:
 1. **DNS** — at whichever provider hosts the actual nameservers for
    `nubestack.com` (check the registrar's DNS/nameserver settings if unsure — a
    domain bought at Namecheap is not necessarily hosted there), a `CNAME` record
-   for the `opspilot` host pointing at `nubestack-collab.github.io`.
+   for the `opspilot` host pointing at `nubestack-cloud.github.io`.
 2. **GitHub** — the repository's **Settings → Pages → Custom domain** field set
    to `opspilot.nubestack.com`, and **Enforce HTTPS** ticked once GitHub has
    issued a certificate for it. The organisation may also need to verify the
